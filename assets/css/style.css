@@ -2,10 +2,13 @@ body {
     background-image: url("../images/background.png");
     background-size: cover;
 }
+.container {
+    margin: 0 auto;
+}
 div{
     background-color: white;
-    margin: 10px;
-    width: 25%
+    margin: 10px 0;
+    max-width: 960px;
 }
 h1, h3, span{
     font-weight: bold;
@@ -14,27 +17,32 @@ h1, h3, span{
 h1{
     font-size: 30px;
 }
-.ol{
+/* h2{
+    height: 60px;
+    width: 10px;
+} */
+ol{
     list-style: decimal-leading-zero;
+    
 }
-.ul{
+ul{
     list-style: disc inside;
     text-indent: 30px;
+    
 }
 div.header, div crystals{
     background-color: orangered;
 }
-div.header, div instructions{
+.instructions{
     width:50%;
+    margin: 0 auto;
+
 }
-.numbersToMatch, .winsAndLosses{
-    float: left;
-    width: 20%;
-    height:60px;
-}
-.userTotal{
-    width: 20%;
-    height: 60%;
+.numberToMatch, .winsAndLosses, .userTotal {
+    /* float:left; */
+    /* width: 20%; */
+    min-height:60px;
+    background-color: aqua;
 }
 .crystals{
     clear: both;
