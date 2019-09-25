@@ -1,14 +1,13 @@
-$(document).ready(function () {
-    var random = Math.floor(Math.random() * 101) + 19;
-    $("#randomNumber").text(random);
+var random = Math.floor(Math.random() * 101) + 19;
+$("#randomNumber").text(random);
 
-    //$(document).ready(function () {
-    //  var wins = Math.floor(Math.wins() * 11) + 1;
-    // $("#numberWins").text(random);
-})
+
+//$(document).ready(function () {
+//  var wins = Math.floor(Math.wins() * 11) + 1;
+// $("#numberWins").text(random);
+
 // a random number is selected at the start of the game.
 
-$('#randomNumber').text(Random);
 // Appending random numbers to the randomNumber in html//
 
 var num1 = Math.floor(Math.random() * 11 + 1)
@@ -20,19 +19,17 @@ var num4 = Math.floor(Math.random() * 11 + 1)
 var userTotal = 0;
 var wins = 0;
 var Losses = 0;
-var Random = 0;
-var loser = 0;
-var ohBleh = '';
-var OhYeah = '';
+var Counter = 0;
 
 //Declaring the variables
 $('#numberWins').text(wins);
 $('#numberLosses').text(Losses);
+$("#userScore").text("userScore");
 //Game reset
 function reset() {
-    Random = Math.floor(Math.random() * 101 + 19);
-    console.log(Random)
-    $('#randomNumber').text(Random);
+    random = Math.floor(Math.random() * 101 + 19);
+    console.log(random)
+    $('#randomNumber').text(random);
     num1 = Math.floor(Math.random() * 11 + 1);
     num2 = Math.floor(Math.random() * 11 + 1);
     num3 = Math.floor(Math.random() * 11 + 1);
@@ -40,19 +37,19 @@ function reset() {
     userTotal = 0;
     $('#finalTotal').text(userTotal);
 }
+
+
 //wins added to UserTotal
 function OhYeah() {
+    $("#numberWins").text(wins);
     alert("You won!");
-    wins++;
-    $("numberWins").text(wins);
-    reset(0);
+    reset();
 }
 //losses added to UserTotal
 function ohBleh() {
+    $("#numberLosses").text(Losses);
     alert("You Lose!");
-    Losses++;
-    $("numberLosses").text(Losses);
-    reset(0);
+    reset();
 }
 //sets up clicks for cyrstals
 $('#one').on('click', function () {
@@ -60,55 +57,41 @@ $('#one').on('click', function () {
     console.log("New userTotal= " + userTotal);
     $('#finalTotal').text(userTotal);
     //conditions set for wins&losses
-    if (userTotal == Random) {
-        OhYeah();
-    }
-    else if (userTotal > Random) {
-        loser();
-    }
+    checkscore();
 })
 $('#two').on('click', function () {
     userTotal = userTotal + num2;
     console.log("New userTotal= " + userTotal);
     $('#finalTotal').text(userTotal);
     //conditions set for wins&losses
-    if (userTotal == Random) {
-        OhYeah();
-    }
-    else if (userTotal > Random) {
-        loser();
-    }
+    checkscore();
 })
 $('#three').on('click', function () {
     userTotal = userTotal + num3;
     console.log("New userTotal= " + userTotal);
     $('#finalTotal').text(userTotal);
     //conditions set for wins&losses
-    if (userTotal == Random) {
-        OhYeah();
-    }
-    else if (userTotal > Random) {
-        loser();
-    }
+    checkscore();
 })
 $('#four').on('click', function () {
     userTotal = userTotal + num4;
     console.log("New userTotal= " + userTotal);
     $('#finalTotal').text(userTotal);
     //conditions set for wins&losses
-    if (userTotal == Random) {
-        OhYeah();
-    }
-    else if (userTotal > Random) {
-        loser();
-    }
+    checkscore();
 });
 
-
-
-
-
-
-
-
-
+function checkscore() {
+    console.log(userTotal, random)
+    if (userTotal < random) {
+        return;
+    } else if (userTotal === random) {
+        $('#numberWins').text(wins);
+        OhYeah();
+        wins++;
+    } else if (userTotal > random) {
+        $('#numberLosses').text(Losses);
+        ohBleh();
+        Losses++;
+    }
+}
